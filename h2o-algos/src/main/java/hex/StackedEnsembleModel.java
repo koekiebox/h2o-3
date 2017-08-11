@@ -342,15 +342,6 @@ public class StackedEnsembleModel extends Model<StackedEnsembleModel,StackedEnse
         if (null != aModel._parms._ignored_columns)
           this.ignoredColumns.addAll(Arrays.asList(aModel._parms._ignored_columns));
 
-        // If the client has set _ignored_columns for the StackedEnsemble make sure it's
-        // consistent with the base_models:
-        if (null != this._parms._ignored_columns) {
-          NonBlockingHashSet<String> ensembleIgnoredColumns = new NonBlockingHashSet<>();
-          ensembleIgnoredColumns.addAll(Arrays.asList(this._parms._ignored_columns));
-          if (! ensembleIgnoredColumns.equals(this.ignoredColumns))
-            throw new H2OIllegalArgumentException("A StackedEnsemble takes its ignored_columns list from the base models.  An inconsistent list of ignored_columns was specified for the ensemble model.");
-        }
-
         responseColumn = aModel._parms._response_column;
 
         if (! responseColumn.equals(_parms._response_column))
