@@ -95,7 +95,7 @@ function() {
   print("*************  starting max_runtime_test for word2vec")
   text8.path <- locate("bigdata/laptop/text8.gz")
   words <- h2o.importFile(text8.path, destination_frame="words", col.names="word", col.types="String")
-  reduced <- words[1:h2o.nrow(words)/100,1]
+  reduced <- words[1:170000,1]
   w2v <- h2o.word2vec(reduced, min_word_freq=5, vec_size=50, sent_sample_rate=0.001,
   init_learning_rate=0.025, window_size=4)
   w2vn <- h2o.word2vec(reduced, min_word_freq=5, vec_size=50, sent_sample_rate=0.001,
