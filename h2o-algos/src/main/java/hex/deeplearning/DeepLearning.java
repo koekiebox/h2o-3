@@ -479,6 +479,8 @@ public class DeepLearning extends ModelBuilder<DeepLearningModel,DeepLearningMod
         if (!_parms._quiet_mode) {
           Log.info("==============================================================================================================================================================================");
           if (stop_requested()) {
+            warn("_max_runtime_secs", "Deep Learning model training was interrupted.  " +
+                    "Increase _max_runtime_secs or set it to 0 to disable it.");
             Log.info("Deep Learning model training was interrupted.");
           } else {
             Log.info("Finished training the Deep Learning model.");
